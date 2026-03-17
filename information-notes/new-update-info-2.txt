@@ -1,0 +1,70 @@
+Here’s a breakdown of what I found in the file you shared plus some common reasons why `.md` files may not be “showing up” (or behaving as expected) — followed by some steps to help you debug the issue.
+
+---
+
+## What I saw in `new-update-info-1.txt`
+
+The doc gives a detailed overview of the repository `gokai55666-dev/setup-workflow` and how it's structured:
+
+- There’s a folder `information-notes` which contains `.md` files such as `Framework-V1-0.md`, `Possible_fix1.md`, `Possible_fix2.md`. ([github.com](https://github.com/gokai55666-dev/setup-workflow/blob/main/information-notes%2Fnew-update-info-1.txt))  
+- There are also `.sh` scripts in `.github/workflows`. But these are shell scripts, *not* standard GitHub Actions workflow definitions, which are usually `.yml` or `.yaml`. ([github.com](https://github.com/gokai55666-dev/setup-workflow/blob/main/information-notes%2Fnew-update-info-1.txt))  
+- The doc also notes that only `learn-github-actions.yml` is a workflow file (YAML) in the root; workflows trigger only when defined in `.github/workflows` with `.yml` files, not `.sh`. ([github.com](https://github.com/gokai55666-dev/setup-workflow/blob/main/information-notes%2Fnew-update-info-1.txt))  
+
+From this, we can infer that `.md` files in `information-notes` **won’t automatically be used by GitHub Actions or Pages unless explicitly referenced**.
+
+---
+
+## What “not showing up” might mean
+
+To help pinpoint what “not showing up” means in your case, here are possible interpretations:
+
+1. **They don’t show in the GitHub file tree**  
+   → Unlikely, since the `.md` files are clearly listed in `information-notes`. ([github.com](https://github.com/gokai55666-dev/setup-workflow/blob/main/information-notes%2Fnew-update-info-1.txt))  
+
+2. **They are not rendered or linked anywhere (e.g. in navigational menus, website, index, table of contents, or as part of docs/Pages site)**
+   
+3. **They’re not included in a website build (GitHub Pages or custom site) or output**  
+   → If you’re using Pages or a site generator, the `.md` files may need to be in the right folder (`docs/` or root), with front-matter, layout or theme support, etc.
+
+4. **They’re ignored by tooling or excluded from what load/process them**  
+   → Some tools/readers only pick up certain directories or file types; other tools may skip files classified as “documentation/prose” when doing things like code stats or language stats. ([joshuatz.com](https://joshuatz.com/posts/2019/how-to-get-github-to-recognize-a-pure-markdown-repo/?utm_source=openai))  
+
+---
+
+## Common reasons `.md` files don’t show up/usefully
+
+Here are frequent causes encountered when `.md` files exist but don’t actively show up where you expect them:
+
+- **No link/reference**: If nothing in your UI (site, README, Docs) includes the links, they won’t appear anywhere visible beyond the file explorer.
+- **Wrong folder for GitHub Pages**: Pages often serves content only from a folder like `docs/` or the root, *depending on settings*. If your `.md` files are outside that folder or not part of the build source, they won’t be published.  
+- **No front-matter / layout**: When using static site generators (Jekyll, Hugo, etc.), Markdown files often need front-matter (YAML header) to get processed properly. Without it, they might be ignored or shown with no layout.  
+- **Wrong triggering workflows**: If you rely on CI, GitHub Actions, etc. to process the `.md` files, there must be workflow `.yml` definitions that explicitly reference them. `.sh` files alone won’t trigger automatically unless called inside `.yml` workflows.  
+- **File naming or casing issues**: Case-sensitive paths, special characters, spaces, etc. can cause issues where files don’t resolve or are overlooked in site generation.  
+- **Permissions or `.gitignore` rules**: Though less likely, sometimes `.md` files are accidentally ignored or not committed; check `.gitignore` or if the files were staged/committed properly.  
+
+---
+
+## What to check in *your* repo
+
+Based on your repo structure and the notes you provided, here’s what to verify:
+
+1. **Are the `.md` files properly committed/pushed?**  
+   Double-check `git status`, `git log` for recent commits; ensure you locally added and pushed the `.md` files.  
+
+2. **Are you using GitHub Pages or a static site generator?**  
+   - If yes: check where the source content folder is set (`root`, `docs/`, etc.).  
+   - Check if `.md` files are inside that folder.  
+   - If using Jekyll, ensure each `.md` has front-matter if needed.  
+
+3. **Are there workflow `.yml` files that process, build or publish these `.md` files?**  
+   Since `.github/workflows` only has `.sh` scripts, see if these scripts are called from `.yml` workflows (like `learn-github-actions.yml`). If not, the `.md` files might never be used in builds.  
+
+4. **Are the `.md` files being linked someplace?**  
+   If they exist but no one links to them (in index, README etc.), they might not show up in navigation or site output.
+
+5. **Check file paths, names, casing**  
+   Make sure file names are correct, paths used in links are accurate.  
+
+---
+
+If you want, I can pull up your `learn-github-actions.yml` and examine it to see whether it references those `.md` files (or where it could be failing). Do you want me to trace through that?
