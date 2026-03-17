@@ -1,6 +1,12 @@
-Remember this needs to work ASAP? 
+Remember this needs to work ASAP? therefore help me with what I need add to/edit on repository:
 
-this needs to build what was being attempted on these:
+
+this needs to build what was being attempted on these:  https://github.com/gokai55666-dev/freedom-generator ,
+https://github.com/gokai55666-dev/freedom-ai , 
+https://github.com/gokai55666-dev/55 , 
+https://github.com/gokai55666-dev/Number-1 , 
+
+
 
 
 ALSO REMEMBER IT NEEDS TO BE AS CAPABLE INTERMS OF PERSONAL USE AS POSSIBLE?
