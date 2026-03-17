@@ -1,0 +1,29 @@
+# .github/workflows/lint.yml
+name: Lint & Format
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  shell-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install tools (shellcheck, shfmt)
+      run: |
+        sudo apt update
+        sudo apt install -y shellcheck shfmt
+
+    - name: Run shellcheck
+      run: |
+        shellcheck **/*.sh
+
+    - name: Format with shfmt and check
+      run: |
+        shfmt -d **/*.sh
