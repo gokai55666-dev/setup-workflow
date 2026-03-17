@@ -1,0 +1,26 @@
+# .github/workflows/test.yml
+name: Run Tests
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  bats-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up BATS and libraries
+      uses: bats-core/action@v3
+      with:
+        run: |
+          bats-core -v  # verify install
+
+    - name: Run tests
+      run: |
+        find bats-core/ -name '*.bats' | xargs -I{} bats {}
