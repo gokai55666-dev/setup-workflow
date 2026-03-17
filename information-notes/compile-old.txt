@@ -1,6 +1,6 @@
 os so here is info off old .MD files that aren't opening properly.
 
-information-added.md :
+information-added1.md :
 
 Here’s a fresh draft for replacing learn-github-actions.yml, followed by insights and suggested updates based on your information-notes directory. Let me know if you want parts adjusted or removed.
 
