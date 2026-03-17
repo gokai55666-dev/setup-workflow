@@ -1,5 +1,7 @@
-Remember this needs to work ASAP? therefore help me with what I need add to/edit on repository:
+Remember this needs to work ASAP? therefore help me with what I need add to/edit on this spefic repository:
+https://github.com/gokai55666-dev/setup-workflow/tree/main     or maybe it's 
 
+https://github.com/gokai55666-dev/setup-workflow/ ?, add or subtract / when nesscary.
 
 this needs to build what was being attempted on these:  https://github.com/gokai55666-dev/freedom-generator ,
 https://github.com/gokai55666-dev/freedom-ai , 
