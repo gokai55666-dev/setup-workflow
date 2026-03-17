@@ -6,11 +6,13 @@ _ This is a repository that is being desgined to Star A completely private and 1
 ## Short-Term Goals
 - let AI tools help improve and make them work honestly and fast?
 - help make sure all new information is added to a folder that will be read by AI helper tools e.g. openAI,etc?
+-build automatic script that optimise this repository and also the RunPod cloud hosted GPU *e.g. A40* itself?
 - ...
 
 ## Long-Term Goals
 - Build repository  
-- Debug Repository Until it ALL WORKS IN PERFECT PRIVATE TANDUM.
+- Debug Repository Until it ALL WORKS PERFECT PRIVATE AND COMPLETELY.
+- refine automatic scripts that optimise this repository and also the RunPod cloud hosted GPU *e.g. A40* itself, get it running sucsessfully? ASAP however still COMPLETELY THOROUGHLY!
 - ...
 
 ## Non-Functional Goals
