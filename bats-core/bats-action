@@ -1,0 +1,4 @@
+- name: Setup Bats and libs
+        uses: bats-core/bats-action@3.0.1
+      - name: Show Bats version
+        run: bats --version   # or `bats -v`
